@@ -11,7 +11,8 @@ Some other topics covered include:
 - Voxels 
 
 ## Visualization of the results
-<img src="media/lidar-results-road_only.gif" width="1080" height="675" />
+<img src="media/lidar-results.gif" width="720" height="450" />
+<img src="media/lidar-results-road_only.gif" width="720" height="450" />
 
 ## Build and run on macOS
 ```
