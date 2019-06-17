@@ -11,7 +11,7 @@ Some other topics covered include:
 - Voxels 
 
 ## Visualization of the results
-<img src="media/lidar-pcd_streaming.gif" width="700" height="400" />
+<img src="media/lidar-results-road_only.gif" width="1080" height="675" />
 
 ## Build and run on macOS
 ```
