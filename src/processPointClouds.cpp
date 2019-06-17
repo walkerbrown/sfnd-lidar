@@ -198,7 +198,7 @@ static void clusterHelper(int index, const std::vector<std::vector<float>> point
 	}
 }
 
-static std::vector<std::vector<int>> euclideanCluster(const std::vector<std::vector<float>>& points, KdTree* tree, float distanceTol)
+static std::vector<std::vector<int>> euclideanCluster(const std::vector<std::vector<float>>& points, KdTree* tree, float distanceTol, int minSize, int maxSize)
 {
 	std::vector<std::vector<int>> clusters;
 	std::vector<bool> processed(points.size(), false);
@@ -206,12 +206,21 @@ static std::vector<std::vector<int>> euclideanCluster(const std::vector<std::vec
 	int i = 0;
 
 	while (i < points.size()) {
-		if (processed[i++]) continue;
+		if (processed[i]) {
+            i++;
+            continue;
+        }
 
 		std::vector<int> cluster;
 		clusterHelper(i, points, cluster, processed, tree, distanceTol);
-		clusters.push_back(cluster);
-		i++;
+        if (cluster.size() >= minSize && cluster.size() <= maxSize) {
+            clusters.push_back(cluster);
+        } else {
+            for (int remove_index : cluster) {
+                processed[remove_index] = false;
+            }
+        }
+        i++;
 	}
 
 	return clusters;
@@ -233,7 +242,7 @@ std::vector<typename pcl::PointCloud<PointT>::Ptr> ProcessPointClouds<PointT>::C
     	tree->insert(std::vector<float> {pt.x, pt.y, pt.z}, i);
     }
 
-    std::vector<std::vector<int>> clusterIndices = euclideanCluster(pts, tree, clusterTolerance);
+    std::vector<std::vector<int>> clusterIndices = euclideanCluster(pts, tree, clusterTolerance, minSize, maxSize);
 
     for (auto clusterIndex : clusterIndices) {
         typename pcl::PointCloud<PointT>::Ptr cloudCluster (new pcl::PointCloud<PointT>);
