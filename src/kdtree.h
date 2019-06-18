@@ -1,5 +1,6 @@
-/* \author Aaron Brown */
-// Quiz on implementing kd tree
+// Project template by Aaron Brown at Udacity, Inc.
+// Assignment completed by Dylan Walker Brown
+// See LICENSE file for details
 
 #ifndef KDTREE_H
 #define KDTREE_H

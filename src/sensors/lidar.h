@@ -1,3 +1,7 @@
+// Project template by Aaron Brown at Udacity, Inc.
+// Assignment completed by Dylan Walker Brown
+// See LICENSE file for details
+
 #ifndef LIDAR_H
 #define LIDAR_H
 #include "../render/render.h"

@@ -1,4 +1,7 @@
-/* \author Aaron Brown */
+// Project template by Aaron Brown at Udacity, Inc.
+// Assignment completed by Dylan Walker Brown
+// See LICENSE file for details
+
 // Quiz on implementing simple RANSAC line fitting
 
 #include "../../render/render.h"

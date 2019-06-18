@@ -1,6 +1,6 @@
-/* \author Aaron Brown */
-// Create simple 3d highway enviroment using PCL
-// for exploring self-driving car sensors
+// Project template by Aaron Brown at Udacity, Inc.
+// Assignment completed by Dylan Walker Brown
+// See LICENSE file for details
 
 #include "sensors/lidar.h"
 #include "render/render.h"

@@ -1,4 +1,7 @@
-/* \author Aaron Brown */
+// Project template by Aaron Brown at Udacity, Inc.
+// Assignment completed by Dylan Walker Brown
+// See LICENSE file for details
+
 // Functions and structs used to render the enviroment
 // such as cars and the highway
 

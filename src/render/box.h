@@ -1,3 +1,7 @@
+// Project template by Aaron Brown at Udacity, Inc.
+// Assignment completed by Dylan Walker Brown
+// See LICENSE file for details
+
 #ifndef BOX_H
 #define BOX_H
 #include <Eigen/Geometry> 

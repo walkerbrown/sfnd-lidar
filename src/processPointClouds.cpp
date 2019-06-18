@@ -1,5 +1,8 @@
-// PCL lib Functions for processing point clouds 
+// Project template by Aaron Brown at Udacity, Inc.
+// Assignment completed by Dylan Walker Brown
+// See LICENSE file for details
 
+// PCL lib Functions for processing point clouds 
 #include <unordered_set>
 #include "processPointClouds.h"
 
