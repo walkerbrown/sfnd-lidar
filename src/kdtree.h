@@ -35,7 +35,8 @@ struct KdTree
 		// Otherwise, traverse down the tree
 		else {
 			// Calculate split type based on current depth
-			uint cd = depth % 2;
+			uint k = 3;  // k-dimensional space to partition
+			uint cd = depth % k;
 			if (point[cd] < ((*node)->point[cd])) {
 				insertHelper(&((*node)->left), depth+1, point, id);
 			} else {
@@ -57,18 +58,28 @@ struct KdTree
 		if (node != NULL) {
 			auto x = node->point[0];
 			auto y = node->point[1];
+			auto z = node->point[2];
 			auto tx = target[0];
 			auto ty = target[1];
+			auto tz = target[2];
 
-			if (x >= tx - distanceTol && x <= tx + distanceTol && y >= ty - distanceTol && y <= ty + distanceTol) {
-				float distance = sqrt((x - tx)*(x - tx) + (y - ty)*(y - ty));
+			if (x >= tx - distanceTol &&
+				x <= tx + distanceTol &&
+				y >= ty - distanceTol &&
+				y <= ty + distanceTol &&
+				z >= tz - distanceTol &&
+				z <= tz + distanceTol) {
+				float distance = sqrt((x - tx)*(x - tx) +
+									  (y - ty)*(y - ty) +
+									  (z - tz)*(z - tz));
 				if (distance <= distanceTol) {
 					ids.push_back(node->id);
 				}
 			}
 
-			// Split left or right depending on depth and recurse
-			auto split_lr = depth % 2;
+			// Split on xy/yz/zx hyperplane depending on depth and recurse
+			uint k = 3;
+			auto split_lr = depth % k;
 			if (target[split_lr] - distanceTol < node->point[split_lr])
 				searchHelper(target, node->left, depth+1, distanceTol, ids);
 			if (target[split_lr] + distanceTol > node->point[split_lr])
